@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# Let's Hang - Event Creation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- built with React, TypeScript, Tailwind CSS, and shadcn/ui components.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Event Form
+- Event name
+- Phone number for draft saving
+- date/time, location fields
+- Cost per person,
+- Capacity [ to be added as extra ]
+- Description textarea
+- Expandable "Show more" section
 
-## React Compiler
+### 2. Flyer Card with Image Upload
+- Customizable event flyer with "YOU'RE INVITED" design
+- Edit button to upload custom flyer images
+- Images are stored in IndexedDB
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. Background Customization
+- 3 preset gradient backgrounds:
+  - Pink Purple (default)
+  - Blue Teal
+  - Warm Sunset
+- Custom image upload for page background
+- Images stored in IndexedDB
 
-## Expanding the ESLint configuration
+### 4. Customizable Modules
+- Quick Links - Add custom links (website, social media, tickets)
+- RSVP - Enable RSVP functionality
+- Photo Gallery - Upload event photos
+- Announcements - Add event updates
+- Polls - Create simple polls
+- Map - Add location map
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 5. Go Live Functionality
+- Form validation
+- Success modal with shareable link
+- Copy to clipboard functionality
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 6. Local Storage & Draft Saving
+- Mock backend service for event storage
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18+** with TypeScript
+- **Vite** 
+- **Tailwind CSS** 
+- **shadcn/ui** 
+- **Zustand** - State management with persist middleware
+- **IndexedDB** (via idb) - Image storage
+- **react-hook-form** + **zod** - Form handling and validation
+- **framer-motion** - Smooth animations
+- **react-dropzone** - File upload handling
+- **lucide-react** - Icons library
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Storage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **localStorage**: Event data, drafts, and form state
+- **IndexedDB**: Flyer images and background images
+- Zustand persist middleware for automatic state synchronization
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
